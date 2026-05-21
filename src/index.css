@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
+body {
+  margin: 0;
+  background: #f8fafc;
+}
+
+.chat-window {
+  animation: chat-window-in 140ms ease-out;
+}
+
+@keyframes chat-window-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #00549b;
+  animation: chat-dot-pulse 0.9s ease-in-out infinite;
+}
+
+.chat-dot.delay-150 {
+  animation-delay: 150ms;
+}
+
+.chat-dot.delay-300 {
+  animation-delay: 300ms;
+}
+
+@keyframes chat-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
 .chat-markdown {
   max-width: 100%;
   overflow-x: auto;
@@ -19,9 +69,19 @@
   margin: 0 0 0.75rem;
 }
 
+.chat-markdown ul,
+.chat-markdown ol {
+  margin: 0 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.chat-markdown li + li {
+  margin-top: 0.25rem;
+}
+
 .chat-markdown table {
-  width: max-content;
-  min-width: 100%;
+  width: 100%;
+  min-width: 520px;
   border-collapse: collapse;
   font-size: 12px;
   line-height: 1.45;
@@ -33,7 +93,8 @@
   padding: 0.5rem 0.625rem;
   text-align: left;
   vertical-align: top;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .chat-markdown th {
@@ -44,4 +105,11 @@
 
 .chat-markdown tr:nth-child(even) td {
   background: #f8fafc;
+}
+
+.chat-markdown code {
+  border-radius: 0.375rem;
+  background: #f1f5f9;
+  padding: 0.1rem 0.3rem;
+  font-size: 12px;
 }
