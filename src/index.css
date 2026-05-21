@@ -1,1 +1,47 @@
 @import "tailwindcss";
+
+.chat-markdown {
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.chat-markdown > *:first-child {
+  margin-top: 0;
+}
+
+.chat-markdown > *:last-child {
+  margin-bottom: 0;
+}
+
+.chat-markdown p {
+  margin: 0 0 0.75rem;
+}
+
+.chat-markdown table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.chat-markdown th,
+.chat-markdown td {
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 0.625rem;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.chat-markdown th {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.chat-markdown tr:nth-child(even) td {
+  background: #f8fafc;
+}

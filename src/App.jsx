@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const PERTAMINA_RED = '#ED1C24';
 const PERTAMINA_BLUE = '#00549B';
@@ -316,11 +318,19 @@ const ChatWidget = () => {
                         layout
                         className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                       >
-                        <div className={`max-w-[85%] p-3 shadow-sm ${msg.role === 'user'
+                        <div className={`min-w-0 max-w-[85%] p-3 shadow-sm ${msg.role === 'user'
                           ? 'rounded-2xl rounded-tr-md bg-[#00549B] text-white shadow-[#00549B]/20'
                           : 'rounded-2xl rounded-tl-md border border-slate-100 bg-white text-slate-800'
                           }`}>
-                          <p className="text-[13px] leading-relaxed">{typeof msg.content === 'string' ? msg.content : JSON.stringify(msg.content)}</p>
+                          {msg.role === 'assistant' ? (
+                            <div className="chat-markdown">
+                              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {typeof msg.content === 'string' ? msg.content : JSON.stringify(msg.content)}
+                              </ReactMarkdown>
+                            </div>
+                          ) : (
+                            <p className="text-[13px] leading-relaxed">{typeof msg.content === 'string' ? msg.content : JSON.stringify(msg.content)}</p>
+                          )}
 
                           {msg.sources && msg.sources.length > 0 && (
                             <div className="mt-2 flex items-center gap-1 border-t border-slate-100 pt-2 text-[10px] font-medium text-[#00549B]">
