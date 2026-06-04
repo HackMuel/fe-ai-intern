@@ -1,29 +1,33 @@
 import { memo } from 'react';
 import MarkdownAnswer from './MarkdownAnswer';
 import SourceList from './SourceList';
+import { AssistantAvatar, UserAvatar } from './Avatars';
 
-function toDisplayText(value) {
-  return typeof value === 'string' ? value : JSON.stringify(value);
-}
+const toText = (value) => (typeof value === 'string' ? value : JSON.stringify(value));
 
 function ChatMessage({ message }) {
   const isUser = message.role === 'user';
 
+  if (isUser) {
+    return (
+      <div className="chat-msg-in flex justify-end gap-3">
+        <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-[#00549B] px-4 py-2.5 text-sm leading-relaxed text-white shadow-sm">
+          <p className="whitespace-pre-wrap break-words">{toText(message.content)}</p>
+        </div>
+        <UserAvatar />
+      </div>
+    );
+  }
+
   return (
-    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
-      <div className={`min-w-0 max-w-[88%] rounded-2xl px-3.5 py-3 text-[13px] leading-relaxed ${isUser
-        ? 'rounded-tr-md bg-[#00549B] text-white'
-        : 'rounded-tl-md border border-slate-200 bg-white text-slate-800'
-      }`}
-      >
-        {isUser ? (
-          <p>{toDisplayText(message.content)}</p>
-        ) : (
-          <>
-            <MarkdownAnswer content={toDisplayText(message.content)} />
-            <SourceList sources={message.sources} />
-          </>
-        )}
+    <div className="chat-msg-in flex gap-3">
+      <AssistantAvatar />
+      <div className="min-w-0 max-w-[80%]">
+        <div className="mb-1 text-xs font-semibold text-slate-500">Asisten Pertamina</div>
+        <div className="rounded-2xl rounded-tl-sm border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm">
+          <MarkdownAnswer content={toText(message.content)} />
+          <SourceList sources={message.sources} chunkCount={message.retrievedChunks?.length ?? 0} />
+        </div>
       </div>
     </div>
   );
