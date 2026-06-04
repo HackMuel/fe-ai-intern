@@ -4,16 +4,16 @@ import { APP_NAME, EXAMPLE_QUESTIONS } from '../constants';
 
 function EmptyState({ onSelectExample }) {
   return (
-    <div className="mx-auto flex h-full max-w-2xl flex-col items-center justify-center px-4 py-10 text-center">
-      <BrandLogo className="h-16 w-16" />
+    <div className="mx-auto flex min-h-full max-w-2xl flex-col items-center justify-center px-4 py-8 text-center">
+      <BrandLogo className="h-12 w-12 @md:h-16 @md:w-16" />
 
-      <h2 className="mt-5 text-xl font-bold text-slate-900 sm:text-2xl">{APP_NAME}</h2>
-      <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-500">
+      <h2 className="mt-4 text-lg font-bold text-slate-900 @md:mt-5 @md:text-2xl">{APP_NAME}</h2>
+      <p className="mt-2 max-w-md text-[13px] leading-relaxed text-slate-500 @md:text-sm">
         Asisten pengetahuan internal berbasis AI. Ajukan pertanyaan seputar SOP, K3, data operasional,
         dan kepegawaian untuk mendapatkan jawaban yang dirangkum dari dokumen resmi.
       </p>
 
-      <div className="mt-8 grid w-full gap-2.5 sm:grid-cols-2">
+      <div className="mt-6 grid w-full gap-2.5 @md:mt-8 @lg:grid-cols-2">
         {EXAMPLE_QUESTIONS.map((q) => (
           <button
             key={q}

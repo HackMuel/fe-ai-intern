@@ -48,11 +48,11 @@ const MessageList = memo(forwardRef(function MessageList(
   const isEmpty = messages.length === 0 && !isLoading && !error;
 
   return (
-    <div ref={ref} className="chat-scroll min-h-0 flex-1 overflow-y-auto">
+    <div ref={ref} className="chat-scroll @container min-h-0 flex-1 overflow-y-auto">
       {isEmpty ? (
         <EmptyState onSelectExample={onSelectExample} />
       ) : (
-        <div className="mx-auto max-w-3xl space-y-5 px-3 py-6 sm:px-6">
+        <div className="mx-auto max-w-3xl space-y-5 px-3 py-5 @md:px-6 @md:py-6">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} />
           ))}

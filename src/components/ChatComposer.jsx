@@ -24,7 +24,7 @@ function ChatComposer({ value, onChange, onSubmit, isLoading }) {
   };
 
   return (
-    <div className="border-t border-slate-200 bg-white px-3 py-3 sm:px-6">
+    <div className="@container border-t border-slate-200 bg-white px-3 py-3 @md:px-6">
       <div className="mx-auto max-w-3xl">
         <div className="flex items-end gap-2 rounded-2xl border border-slate-300 bg-white px-3 py-2 shadow-sm transition focus-within:border-[#00549B] focus-within:ring-2 focus-within:ring-[#00549B]/15">
           <textarea
