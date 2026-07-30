@@ -2,10 +2,10 @@ export const APP_NAME = 'Pertamina Internal Chatbot';
 export const APP_TAGLINE = 'AI Knowledge Assistant';
 
 export const EXAMPLE_QUESTIONS = [
-  'Berapa tingkat kepatuhan APD',
+  'Profil Perusahaan',
   'Berikan seluruh karyawan yang berada di divisi HSSE',
   'Berikan data karyawan yang rekap lembur nya disetujui',
-  'Apa nama unit perusahaan ini',
+  'Apa saja materi pelatihan literasi informasi?	',
 ];
 
 export const KNOWLEDGE_SOURCES = [
